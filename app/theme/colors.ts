@@ -11,12 +11,11 @@ const palette = {
   neutral800: "#191015",
   neutral900: "#000000",
 
-  primary100: "#F4E0D9",
-  primary200: "#E8C1B4",
-  primary300: "#DDA28E",
-  primary400: "#D28468",
-  primary500: "#C76542",
-  primary600: "#A54F31",
+  primary100: "#FFFAFA",
+  primary200: "#FFEBEE",
+  primary300: "#FBC2C6",
+  primary400: "#F6969E",
+  primary500: "#EE3D48",
 
   secondary100: "#DCDDE9",
   secondary200: "#BCC0D6",
@@ -36,6 +35,27 @@ const palette = {
   overlay20: "rgba(25, 16, 21, 0.2)",
   overlay50: "rgba(25, 16, 21, 0.5)",
 } as const
+
+export const pokemonTypes = {
+  normal: "#A8A77A",
+  fire: "#EE8130",
+  water: "#6390F0",
+  electric: "#F7D02C",
+  grass: "#7AC74C",
+  ice: "#96D9D6",
+  fighting: "#C22E28",
+  poison: "#A33EA1",
+  ground: "#E2BF65",
+  flying: "#A98FF3",
+  psychic: "#F95587",
+  bug: "#A6B91A",
+  rock: "#B6A136",
+  ghost: "#735797",
+  dragon: "#6F35FC",
+  dark: "#705746",
+  steel: "#B7B7CE",
+  fairy: "#D685AD",
+}
 
 export const colors = {
   /**
@@ -81,4 +101,8 @@ export const colors = {
    *
    */
   errorBackground: palette.angry100,
+  /**
+   * Types for each pokemon type
+   */
+  pokemonTypes,
 }
