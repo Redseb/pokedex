@@ -1,7 +1,7 @@
-import { TabsIcons, TabsNames } from 'app/navigators';
+import { TabsIcons } from 'app/navigators';
 import { $shadow, colors, rounding, spacing } from 'app/theme';
 import React from 'react';
-import { View, Text, TouchableOpacity, ViewStyle, TextStyle } from 'react-native';
+import { View, TouchableOpacity, ViewStyle } from 'react-native';
 import { NavigationIcon } from './NavigationIcon';
 
 export const NavigationBottomTab = ({ state, descriptors, navigation }) => {
@@ -9,12 +9,6 @@ export const NavigationBottomTab = ({ state, descriptors, navigation }) => {
     <View style={$tabBarContainer}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-            ? options.title
-            : route.name;
 
         const isFocused = state.index === index;
 

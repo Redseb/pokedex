@@ -1,7 +1,7 @@
 import * as React from "react"
-import { StyleProp, TextStyle, View, ViewStyle } from "react-native"
+import { View, ViewStyle } from "react-native"
 import { observer } from "mobx-react-lite"
-import { colors, typography } from "app/theme"
+import { colors } from "app/theme"
 import {Icon, IconTypes} from './'
 
 export interface NavigationIconProps {
