@@ -6,6 +6,7 @@ import {
 } from "app/screens"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { IconTypes, NavigationBottomTab } from "app/components"
+import { NativeStackScreenProps } from "@react-navigation/native-stack"
 
 export type TabsNavigatorParamList = {
   Home: undefined,
@@ -24,6 +25,11 @@ export const TabsIcons = {
   Favorites: 'star' as IconTypes,
   Search: 'search' as IconTypes,
 }
+
+export type TabsNavigatorScreenProps<T extends keyof TabsNavigatorParamList> = NativeStackScreenProps<
+TabsNavigatorParamList,
+  T
+>
 
 const Tabs = createBottomTabNavigator<TabsNavigatorParamList>()
 export const TabsNavigator = () => {

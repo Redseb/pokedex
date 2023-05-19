@@ -2,10 +2,9 @@ import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
 import { ViewStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import { AppStackScreenProps } from "app/navigators"
+import { AppStackParamList, AppStackScreenProps } from "app/navigators"
 import { Screen, Text } from "app/components"
-import { useNavigation } from "@react-navigation/native"
-// import { useNavigation } from "@react-navigation/native"
+import { NavigationProp, useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
 interface PokemonDetailsScreenProps extends NativeStackScreenProps<AppStackScreenProps<"PokemonDetails">> {}
@@ -15,7 +14,7 @@ export const PokemonDetailsScreen: FC<PokemonDetailsScreenProps> = observer(func
   // const { someStore, anotherStore } = useStores()
 
   // Pull in navigation via hook
-  const {goBack} = useNavigation()
+  const {goBack} = useNavigation<NavigationProp<AppStackParamList>>()
   return (
     <Screen style={$root} preset="scroll">
       <Text text="pokemonDetails" onPress={() => goBack()} style={{marginTop: 50}}/>
