@@ -6,7 +6,7 @@ const palette = {
   neutral300: "#D7CEC9",
   neutral400: "#B6ACA6",
   neutral500: "#978F8A",
-  neutral600: "#564E4A",
+  neutral600: "#4A4A4A",
   neutral700: "#3C3836",
   neutral800: "#191015",
   neutral900: "#000000",
@@ -133,7 +133,7 @@ export const colors = {
   /**
    * The default color of the screen background.
    */
-  background: palette.neutral200,
+  background: palette.neutral100,
   /**
    * The default border color.
    */
@@ -159,4 +159,12 @@ export const colors = {
    * Types for each pokemon type
    */
   pokemonTypes,
+  /**
+   * The active navigation color
+   */
+  activeNavigation: palette.neutral100,
+  /**
+   * The inactive navigation color
+   */
+  inactiveNavigation: palette.neutral600,
 }
