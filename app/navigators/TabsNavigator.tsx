@@ -5,6 +5,7 @@ import {
   SearchScreen,
 } from "app/screens"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { IconTypes, NavigationBottomTab, NavigationIcon, iconRegistry } from "app/components"
 
 export type TabsNavigatorParamList = {
   Home: undefined,
@@ -18,10 +19,16 @@ export enum TabsNames {
   Search = "Search",
 }
 
+export const TabsIcons = {
+  Home: 'home' as  IconTypes,
+  Favorites: 'star' as IconTypes,
+  Search: 'search' as IconTypes,
+}
+
 const Tabs = createBottomTabNavigator<TabsNavigatorParamList>()
 export const TabsNavigator = () => {
   return (
-    <Tabs.Navigator screenOptions={{ cardStyle: { backgroundColor: "transparent" }, headerShown: false, }}>
+    <Tabs.Navigator screenOptions={{ cardStyle: { backgroundColor: "transparent" }, headerShown: false,  }} tabBar={props => <NavigationBottomTab {...props}/>}>
       <Tabs.Screen name={TabsNames.Favorites} component={FavoritesScreen} />
       <Tabs.Screen name={TabsNames.Home} component={HomeScreen} />
       <Tabs.Screen name={TabsNames.Search} component={SearchScreen} />
