@@ -1,10 +1,11 @@
 import React from 'react';
-import { Image, ImageStyle, StyleProp, TextStyle, View, ViewStyle } from 'react-native';
+import { StyleProp, TextStyle, View, ViewStyle, TouchableOpacity } from 'react-native';
 import { observer } from 'mobx-react-lite';
 import { Pokemon } from '../types';
-import { $shadow, colors, rounding, typography } from '../theme';
+import { $shadow, ACTIVE_OPACITY, colors, rounding } from '../theme';
 import { AutoImage, Text } from './';
 import padNumber from 'app/utils/helpersCommon';
+import { AppScreenName, navigate } from 'app/navigators';
 
 const CARD_HEIGHT = 100;
 const CARD_WIDTH = 160;
@@ -38,13 +39,17 @@ export const PokeCard = observer(function PokeCard(props: PokeCardProps) {
     { backgroundColor: primaryColor },
   ]
 
+  const onPress = () => {
+    navigate(AppScreenName.PokemonDetails, {pokemon})
+  }
+
   return (
-    <View style={$styles}>
+    <TouchableOpacity style={$styles} activeOpacity={ACTIVE_OPACITY} onPress={onPress}>
       <AutoImage source={{ uri: spriteUrl }} maxHeight={CARD_HEIGHT*0.75} maxWidth={CARD_WIDTH}/>
       <View style={[$nameContainer, {backgroundColor: secondaryColor}]}>
       <Text style={$text}>{`#${padNumber(pokemon.id)} ${pokemon.name}`}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 })
 

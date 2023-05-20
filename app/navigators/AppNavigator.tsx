@@ -18,6 +18,7 @@ import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
 import { TabsNavigator } from "./TabsNavigator"
 import { PokemonDetailsScreen } from "app/screens"
+import { Pokemon } from "app/types"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -34,7 +35,7 @@ import { PokemonDetailsScreen } from "app/screens"
  */
 export type AppStackParamList = {
   TabsNavigator: undefined
-	PokemonDetails: undefined
+	PokemonDetails: {pokemon: Pokemon}
 	// IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 

@@ -1,5 +1,7 @@
 import { ViewStyle } from "react-native"
 
+export const ACTIVE_OPACITY = 0.9
+
 export const $shadow: Record<"boxShadow", ViewStyle> = {
   boxShadow: {
     shadowColor: "#000",
