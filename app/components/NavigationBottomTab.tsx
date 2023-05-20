@@ -57,7 +57,7 @@ const $tabBarContainer: ViewStyle = {
   backgroundColor: colors.palette.primary500,
   borderTopRightRadius: rounding.s,
   borderTopLeftRadius: rounding.s,
-  ...$shadow
+  ...$shadow.boxShadow,
 }
 
 const $tabContainer: ViewStyle = {
