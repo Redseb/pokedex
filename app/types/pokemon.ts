@@ -29,35 +29,35 @@ export enum PokemonStat {
 }
 
 export enum PokemonStatDTO {
-    Hp = "hp",
-    Attack = "attack",
-    Defense = "defense",
-    SpecialAttack = "special-attack",
-    SpecialDefense = "special-defense",
-    Speed = "speed",
-  }
-
-export interface Pokemon {
-    id: number
-    name: string
-    height: number
-    weight: number
-    types: PokemonElementalType[]
-    stats: {
-        [key in PokemonStat]: number
-    }
-    sprites: {
-        back_default: string
-        back_female: string | null
-        back_shiny: string
-        back_shiny_female: string | null
-        front_default: string
-        front_female: string | null
-        front_shiny: string
-        front_shiny_female: string | null
-    }
+  Hp = "hp",
+  Attack = "attack",
+  Defense = "defense",
+  SpecialAttack = "special-attack",
+  SpecialDefense = "special-defense",
+  Speed = "speed",
 }
 
+export interface Pokemon {
+  id: number
+  name: string
+  height: number
+  weight: number
+  types: PokemonElementalType[]
+  stats: {
+    [key in PokemonStat]: number
+  }
+  sprites: {
+    back_default: string
+    back_female: string | null
+    back_shiny: string
+    back_shiny_female: string | null
+    front_default: string
+    front_female: string | null
+    front_shiny: string
+    front_shiny_female: string | null
+  }
+  abilities: string[]
+}
 
 export interface PokemonDTO {
   id: number

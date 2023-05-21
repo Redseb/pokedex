@@ -27,4 +27,5 @@ export const MOCK_POKEMON: Pokemon = {
     speed: 45,
   },
   types: [PokemonElementalType.Grass, PokemonElementalType.Poison],
+  abilities: ["overgrow", "chlorophyll"],
 }
