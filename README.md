@@ -27,3 +27,4 @@ This app was bootstrapped using Ignite
 | Jest              | Test Runner          | v26     | Standard test runner for JS apps               |
 | Maestro           | Testing Framework    |         | Automate end-to-end UI testing                 |
 | date-fns          | Date library         | v2      | Excellent date library                         |
+| flash-list        | Component            | v2      | Blazing fast flat-list alternative             |

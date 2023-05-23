@@ -2,16 +2,10 @@ import React, { FC, useEffect } from "react"
 import { observer } from "mobx-react-lite"
 import { ViewStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
-import {
-  AppScreenName,
-  AppStackParamList,
-  TabsNames,
-  TabsNavigatorScreenProps,
-} from "app/navigators"
-import { PokeCard, Screen, Text } from "app/components"
-import { NavigationProp, useNavigation } from "@react-navigation/native"
+import { TabsNames, TabsNavigatorScreenProps } from "app/navigators"
+import { PokeCard, Screen } from "app/components"
 import { useStores } from "app/models"
-import { FlatList } from "react-native-gesture-handler"
+import { FlashList } from "@shopify/flash-list"
 
 interface HomeScreenProps
   extends NativeStackScreenProps<TabsNavigatorScreenProps<TabsNames.Home>> {}
@@ -26,20 +20,21 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
     getPokemon()
   }, [])
 
-  // Pull in navigation via hook
-  const { navigate } = useNavigation<NavigationProp<AppStackParamList>>()
   return (
-    <Screen style={$root} preset="scroll">
-      <Text
-        text="home"
-        onPress={() => navigate(AppScreenName.PokemonDetails)}
-        style={{ marginTop: 50 }}
+    <Screen style={$root} contentContainerStyle={$rootContentContainer}>
+      <FlashList
+        data={pokemon}
+        renderItem={({ item }) => <PokeCard pokemon={item} />}
+        estimatedItemSize={100}
       />
-      <FlatList data={pokemon} renderItem={({ item }) => <PokeCard pokemon={item} />} />
     </Screen>
   )
 })
 
 const $root: ViewStyle = {
   flex: 1,
+}
+
+const $rootContentContainer: ViewStyle = {
+  height: "100%",
 }
