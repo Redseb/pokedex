@@ -10,6 +10,7 @@ export const PokemonStoreModel = types
   .props({
     pokemon: types.array(PokemonModel),
     dataStatus: DATA_STATUS.IDLE,
+    currentOffset: 0,
   })
   .actions(withSetPropAction)
   .actions((self) => ({
@@ -17,7 +18,7 @@ export const PokemonStoreModel = types
       flow(function* () {
         const pokemonListResponse: ApiResponse<ListPokemonDTO> = yield apiPokemon.getPokemonList(
           20,
-          0,
+          self.currentOffset,
         )
         if (!pokemonListResponse.ok) {
           self.setProp("dataStatus", DATA_STATUS.REJECTED)
@@ -48,8 +49,10 @@ export const PokemonStoreModel = types
             }
           }),
         )
+        const mergedPokemonList = [...self.pokemon, ...pokemonList]
         self.setProp("dataStatus", DATA_STATUS.FULFILLED)
-        self.setProp("pokemon", pokemonList)
+        self.setProp("pokemon", mergedPokemonList)
+        self.setProp("currentOffset", self.currentOffset + 20)
       })(),
   }))
 

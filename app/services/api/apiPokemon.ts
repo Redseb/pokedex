@@ -1,4 +1,3 @@
-import configProd from "app/config/config.prod"
 import { Api, API_ROUTES } from "./api"
 import { ListPokemonDTO, PokemonDTO } from "./api.types"
 import { getGeneralApiProblem } from "./apiProblem"
@@ -11,7 +10,6 @@ export class ApiPokemon {
   }
 
   async getPokemonList(limit: number, offset: number) {
-    console.log(configProd.API_URL)
     const response = await this.api.apisauce.get<ListPokemonDTO[]>(
       API_ROUTES.pokemonList(limit, offset),
     )

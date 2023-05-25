@@ -1,11 +1,10 @@
 import React, { FC, useEffect } from "react"
 import { observer } from "mobx-react-lite"
-import { ViewStyle } from "react-native"
+import { FlatList, ViewStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { TabsNames, TabsNavigatorScreenProps } from "app/navigators"
 import { PokeCard, Screen } from "app/components"
 import { useStores } from "app/models"
-import { ContentStyle, FlashList } from "@shopify/flash-list"
 import Constants from "expo-constants"
 import { spacing } from "app/theme"
 
@@ -13,7 +12,6 @@ interface HomeScreenProps
   extends NativeStackScreenProps<TabsNavigatorScreenProps<TabsNames.Home>> {}
 
 export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
-  // Pull in one of our MST stores
   const {
     pokemonStore: { getPokemon, pokemon },
   } = useStores()
@@ -29,12 +27,14 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
 
   return (
     <Screen style={$root} contentContainerStyle={$rootContentContainer}>
-      <FlashList
+      <FlatList
         data={pokemon}
-        renderItem={({ item }) => <PokeCard pokemon={item} />}
-        estimatedItemSize={100}
+        renderItem={({ item }) => <PokeCard pokemon={item} key={item.name} />}
+        keyExtractor={(item, index) => item.name + index}
         numColumns={2}
         contentContainerStyle={listContainer}
+        onEndReachedThreshold={0.5}
+        onEndReached={getPokemon}
       />
     </Screen>
   )
@@ -49,6 +49,6 @@ const $rootContentContainer: ViewStyle = {
   height: "100%",
 }
 
-const $listContainer: ContentStyle = {
+const $listContainer: ViewStyle = {
   paddingHorizontal: spacing.xxs,
 }
