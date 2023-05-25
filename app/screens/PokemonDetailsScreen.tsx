@@ -7,6 +7,7 @@ import { AutoImage, Icon, Screen, Text } from "app/components"
 import { NavigationProp, RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import { colors, rounding, spacing } from "app/theme"
 import padNumber from "app/utils/helpersCommon"
+import { useStores } from "app/models"
 
 interface PokemonDetailsScreenProps
   extends NativeStackScreenProps<AppStackScreenProps<"PokemonDetails">> {}
@@ -14,6 +15,9 @@ type PokemonDetailsScreenRouteProp = RouteProp<AppStackParamList, AppScreenName.
 
 export const PokemonDetailsScreen: FC<PokemonDetailsScreenProps> = observer(
   function PokemonDetailsScreen() {
+    const {
+      pokemonStore: { toggleFavorite, favorites },
+    } = useStores()
     const route = useRoute<PokemonDetailsScreenRouteProp>()
     const { goBack } = useNavigation<NavigationProp<AppStackParamList>>()
 
@@ -26,11 +30,21 @@ export const PokemonDetailsScreen: FC<PokemonDetailsScreenProps> = observer(
     const contentContainer = [$contentContainer, { backgroundColor: secondaryColor }]
     const dataContainer = [$dataContainer, { backgroundColor: primaryColor }]
 
+    const isFavorite = favorites.includes(route.params.pokemon.id)
+
+    const onPressFavorite = () => {
+      toggleFavorite(route.params.pokemon.id)
+    }
+
     return (
       <Screen style={screenStyle} contentContainerStyle={$rootContentContainer} preset="scroll">
         <View style={$headerContainer}>
           <Icon icon="back" onPress={() => goBack()} />
-          <Icon icon="star" onPress={() => goBack()} />
+          <Icon
+            icon="star"
+            onPress={onPressFavorite}
+            color={isFavorite ? colors.palette.accent500 : null}
+          />
         </View>
         <View style={$imageContainer}>
           <AutoImage

@@ -1,27 +1,52 @@
 import React, { FC } from "react"
 import { observer } from "mobx-react-lite"
-import { ViewStyle } from "react-native"
+import { FlatList, ViewStyle } from "react-native"
 import { NativeStackScreenProps } from "@react-navigation/native-stack"
 import { TabsNames, TabsNavigatorScreenProps } from "app/navigators"
-import { Screen, Text } from "app/components"
+import { PokeCard, Screen, Text } from "app/components"
+import { useStores } from "app/models"
+import { spacing } from "app/theme"
+import Constants from "expo-constants"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
-interface FavoritesScreenProps extends NativeStackScreenProps<TabsNavigatorScreenProps<TabsNames.Favorites>> {}
+interface FavoritesScreenProps
+  extends NativeStackScreenProps<TabsNavigatorScreenProps<TabsNames.Favorites>> {}
 
 export const FavoritesScreen: FC<FavoritesScreenProps> = observer(function FavoritesScreen() {
-  // Pull in one of our MST stores
-  // const { someStore, anotherStore } = useStores()
+  const {
+    pokemonStore: { getPokemon, pokemonFavorites },
+  } = useStores()
 
-  // Pull in navigation via hook
-  // const navigation = useNavigation()
+  const listContainer = {
+    ...$listContainer,
+    paddingVertical: Constants.statusBarHeight + spacing.md,
+  }
+
   return (
-    <Screen style={$root} preset="scroll">
-      <Text text="favorites" />
+    <Screen style={$root} contentContainerStyle={$rootContentContainer}>
+      <FlatList
+        data={pokemonFavorites}
+        renderItem={({ item }) => <PokeCard pokemon={item} key={item.name} />}
+        keyExtractor={(item, index) => item.name + index}
+        numColumns={2}
+        contentContainerStyle={listContainer}
+        onEndReachedThreshold={0.5}
+        onEndReached={getPokemon}
+      />
     </Screen>
   )
 })
 
 const $root: ViewStyle = {
   flex: 1,
+}
+
+const $rootContentContainer: ViewStyle = {
+  flex: 1,
+  height: "100%",
+}
+
+const $listContainer: ViewStyle = {
+  paddingHorizontal: spacing.xxs,
 }

@@ -11,6 +11,7 @@ export const PokemonStoreModel = types
     pokemon: types.array(PokemonModel),
     dataStatus: DATA_STATUS.IDLE,
     currentOffset: 0,
+    favorites: types.array(types.number),
   })
   .actions(withSetPropAction)
   .actions((self) => ({
@@ -54,6 +55,20 @@ export const PokemonStoreModel = types
         self.setProp("pokemon", mergedPokemonList)
         self.setProp("currentOffset", self.currentOffset + 20)
       })(),
+    toggleFavorite: (id: number) => {
+      const index = self.favorites.indexOf(id)
+      if (index === -1) {
+        self.favorites.push(id)
+        self.favorites.sort((a, b) => a - b)
+      } else {
+        self.favorites.splice(index, 1)
+      }
+    },
+  }))
+  .views((self) => ({
+    get pokemonFavorites() {
+      return self.pokemon.filter((pokemon) => self.favorites.includes(pokemon.id))
+    },
   }))
 
 export interface PokemonStore extends Instance<typeof PokemonStoreModel> {}
