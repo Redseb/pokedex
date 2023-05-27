@@ -9,7 +9,7 @@ export const PokemonStoreModel = types
   .model("PokemonStore")
   .props({
     pokemon: types.array(PokemonModel),
-    currentOffset: 0,
+    currentOffset: types.maybeNull(types.number),
     favorites: types.array(types.number),
     dataStatus: DATA_STATUS.IDLE,
     searchStatus: DATA_STATUS.IDLE,
@@ -19,6 +19,7 @@ export const PokemonStoreModel = types
     getPokemon: () =>
       flow(function* () {
         // Fetch next 20 list from API
+        console.log("current offset", self.currentOffset)
         const pokemonListResponse = yield apiPokemon.getPokemonList(20, self.currentOffset)
         if (!pokemonListResponse.ok) {
           self.setProp("dataStatus", DATA_STATUS.REJECTED)
@@ -31,8 +32,9 @@ export const PokemonStoreModel = types
           }),
         )
         const mergedPokemonList = [...self.pokemon, ...pokemonList]
+        const uniquePokemonList = Array.from(new Set(mergedPokemonList))
         self.setProp("dataStatus", DATA_STATUS.FULFILLED)
-        self.setProp("pokemon", mergedPokemonList)
+        self.setProp("pokemon", uniquePokemonList)
         self.setProp("currentOffset", self.currentOffset + 20)
       })(),
     toggleFavorite: (id: number) => {
