@@ -7,6 +7,7 @@ import { PokeCard, Screen, Text } from "app/components"
 import { useStores } from "app/models"
 import { spacing } from "app/theme"
 import Constants from "expo-constants"
+import { Pokemon } from "app/types"
 // import { useNavigation } from "@react-navigation/native"
 // import { useStores } from "app/models"
 
@@ -15,7 +16,7 @@ interface FavoritesScreenProps
 
 export const FavoritesScreen: FC<FavoritesScreenProps> = observer(function FavoritesScreen() {
   const {
-    pokemonStore: { getPokemon, pokemonFavorites },
+    pokemonStore: { pokemonFavorites },
   } = useStores()
 
   const listContainer = {
@@ -23,16 +24,20 @@ export const FavoritesScreen: FC<FavoritesScreenProps> = observer(function Favor
     paddingVertical: Constants.statusBarHeight + spacing.md,
   }
 
+  const keyExtractor = (item: Pokemon, index: number) => `${item.name}${index}`
+
+  const renderItem = ({ item }: { item: Pokemon }) => (
+    <PokeCard pokemon={item} key={item.name} style={$pokecard} />
+  )
+
   return (
     <Screen style={$root} contentContainerStyle={$rootContentContainer}>
       <FlatList
         data={pokemonFavorites}
-        renderItem={({ item }) => <PokeCard pokemon={item} key={item.name} style={$pokecard} />}
-        keyExtractor={(item, index) => item.name + index}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
         numColumns={2}
         contentContainerStyle={listContainer}
-        onEndReachedThreshold={0.5}
-        onEndReached={getPokemon}
       />
     </Screen>
   )
