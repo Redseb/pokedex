@@ -39,76 +39,76 @@ const palette = {
 export const pokemonTypes = {
   bug: {
     primary: "#A6B91A",
-    secondary: "#6E7B0E"
+    secondary: "#6E7B0E",
   },
   dark: {
     primary: "#705746",
-    secondary: "#3E2C1F"
+    secondary: "#3E2C1F",
   },
   dragon: {
     primary: "#6F35FC",
-    secondary: "#3B0BDB"
+    secondary: "#3B0BDB",
   },
   electric: {
     primary: "#F7D02C",
-    secondary: "#C7A500"
+    secondary: "#C7A500",
   },
   fairy: {
     primary: "#D685AD",
-    secondary: "#A84D6B"
+    secondary: "#A84D6B",
   },
   fighting: {
     primary: "#C22E28",
-    secondary: "#7F1D1A"
+    secondary: "#7F1D1A",
   },
   fire: {
     primary: "#EE8130",
-    secondary: "#B9471F"
+    secondary: "#B9471F",
   },
   flying: {
     primary: "#A98FF3",
-    secondary: "#6E5BC8"
+    secondary: "#6E5BC8",
   },
   ghost: {
     primary: "#735797",
-    secondary: "#4B2A5F"
+    secondary: "#4B2A5F",
   },
   grass: {
     primary: "#7AC74C",
-    secondary: "#4E8C18"
+    secondary: "#4E8C18",
   },
   ground: {
     primary: "#E2BF65",
-    secondary: "#B38F3F"
+    secondary: "#B38F3F",
   },
   ice: {
     primary: "#96D9D6",
-    secondary: "#5FA7A4"
+    secondary: "#5FA7A4",
   },
   normal: {
     primary: "#A8A77A",
-    secondary: "#7E7C56"
+    secondary: "#7E7C56",
   },
   poison: {
     primary: "#A33EA1",
-    secondary: "#6E1E6E"
+    secondary: "#6E1E6E",
   },
   psychic: {
     primary: "#F95587",
-    secondary: "#C6245C"
+    secondary: "#C6245C",
   },
   rock: {
     primary: "#B6A136",
-    secondary: "#7F7618"
+    secondary: "#7F7618",
   },
   steel: {
     primary: "#B7B7CE",
-    secondary: "#8C8C9E"
+    secondary: "#8C8C9E",
   },
   water: {
     primary: "#6390F0",
-    secondary: "#3E5DBF"
-  }
+    secondary: "#3E5DBF",
+  },
 }
 
 export const colors = {
@@ -167,4 +167,8 @@ export const colors = {
    * The inactive navigation color
    */
   inactiveNavigation: palette.neutral600,
+  /**
+   * Primary color for the app
+   */
+  primary: palette.primary500,
 }

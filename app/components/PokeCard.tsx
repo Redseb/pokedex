@@ -50,7 +50,6 @@ export const PokeCard = observer(function PokeCard(props: PokeCardProps) {
 })
 
 const $container: ViewStyle = {
-  flex: 1,
   height: CARD_HEIGHT,
   margin: spacing.xxs,
   justifyContent: "space-between",

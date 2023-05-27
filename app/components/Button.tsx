@@ -7,7 +7,7 @@ import {
   TextStyle,
   ViewStyle,
 } from "react-native"
-import { colors, spacing, typography } from "../theme"
+import { colors, rounding, spacing, typography } from "../theme"
 import { Text, TextProps } from "./Text"
 
 type Presets = keyof typeof $viewPresets
@@ -125,7 +125,7 @@ export function Button(props: ButtonProps) {
 
 const $baseViewStyle: ViewStyle = {
   minHeight: 56,
-  borderRadius: 4,
+  borderRadius: rounding.m,
   justifyContent: "center",
   alignItems: "center",
   flexDirection: "row",
@@ -135,8 +135,9 @@ const $baseViewStyle: ViewStyle = {
 }
 
 const $baseTextStyle: TextStyle = {
-  fontSize: 16,
-  lineHeight: 20,
+  color: colors.palette.neutral100,
+  fontSize: 20,
+  lineHeight: 24,
   fontFamily: typography.primary.medium,
   textAlign: "center",
   flexShrink: 1,
@@ -151,34 +152,19 @@ const $viewPresets = {
   default: [
     $baseViewStyle,
     {
-      borderWidth: 1,
-      borderColor: colors.palette.neutral400,
-      backgroundColor: colors.palette.neutral100,
+      backgroundColor: colors.primary,
     },
-  ] as StyleProp<ViewStyle>,
-
-  filled: [$baseViewStyle, { backgroundColor: colors.palette.neutral300 }] as StyleProp<ViewStyle>,
-
-  reversed: [
-    $baseViewStyle,
-    { backgroundColor: colors.palette.neutral800 },
   ] as StyleProp<ViewStyle>,
 }
 
 const $textPresets: Record<Presets, StyleProp<TextStyle>> = {
   default: $baseTextStyle,
-  filled: $baseTextStyle,
-  reversed: [$baseTextStyle, { color: colors.palette.neutral100 }],
 }
 
 const $pressedViewPresets: Record<Presets, StyleProp<ViewStyle>> = {
-  default: { backgroundColor: colors.palette.neutral200 },
-  filled: { backgroundColor: colors.palette.neutral400 },
-  reversed: { backgroundColor: colors.palette.neutral700 },
+  default: { backgroundColor: colors.palette.primary400 },
 }
 
 const $pressedTextPresets: Record<Presets, StyleProp<TextStyle>> = {
   default: { opacity: 0.9 },
-  filled: { opacity: 0.9 },
-  reversed: { opacity: 0.9 },
 }

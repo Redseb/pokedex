@@ -27,7 +27,7 @@ export const FavoritesScreen: FC<FavoritesScreenProps> = observer(function Favor
     <Screen style={$root} contentContainerStyle={$rootContentContainer}>
       <FlatList
         data={pokemonFavorites}
-        renderItem={({ item }) => <PokeCard pokemon={item} key={item.name} />}
+        renderItem={({ item }) => <PokeCard pokemon={item} key={item.name} style={$pokecard} />}
         keyExtractor={(item, index) => item.name + index}
         numColumns={2}
         contentContainerStyle={listContainer}
@@ -49,4 +49,8 @@ const $rootContentContainer: ViewStyle = {
 
 const $listContainer: ViewStyle = {
   paddingHorizontal: spacing.xxs,
+}
+
+const $pokecard: ViewStyle = {
+  flex: 1,
 }

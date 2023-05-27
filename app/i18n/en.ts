@@ -17,6 +17,14 @@ const en = {
     height: "Height: ",
     weight: "Weight: ",
   },
+  searchScreen: {
+    searchTermLabel: "Name or ID",
+    searchButton: "Search!",
+    searchPlaceholder: "Search for a Pokemon",
+    idle: "",
+    pending: "Searching...",
+    rejected: "Hmm we couldn't find that Pokemon. Please enter a valid Pokemon name or ID",
+  },
   errorScreen: {
     title: "Something went wrong!",
     friendlySubtitle:

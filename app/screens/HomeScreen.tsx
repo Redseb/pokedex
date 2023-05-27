@@ -29,7 +29,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
     <Screen style={$root} contentContainerStyle={$rootContentContainer}>
       <FlatList
         data={pokemon}
-        renderItem={({ item }) => <PokeCard pokemon={item} key={item.name} />}
+        renderItem={({ item }) => <PokeCard pokemon={item} key={item.name} style={$pokecard} />}
         keyExtractor={(item, index) => item.name + index}
         numColumns={2}
         contentContainerStyle={listContainer}
@@ -51,4 +51,8 @@ const $rootContentContainer: ViewStyle = {
 
 const $listContainer: ViewStyle = {
   paddingHorizontal: spacing.xxs,
+}
+
+const $pokecard: ViewStyle = {
+  flex: 1,
 }
