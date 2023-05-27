@@ -1,4 +1,4 @@
-import { PokemonElementalType, PokemonStat } from "app/types"
+import { PokemonElementalType } from "app/types"
 
 export interface ListPokemonDTO {
   count: number
@@ -48,7 +48,7 @@ export interface PokemonDTO {
     base_stat: number
     effort: number
     stat: {
-      name: PokemonStat
+      name: PokemonStatDTO
       url: string
     }
   }[]

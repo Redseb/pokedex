@@ -11,7 +11,7 @@ import type { ApiConfig } from "./api.types"
 
 export const API_ROUTES = {
   pokemonList: (limit: number, offset: number) => `/pokemon/?limit=${limit}&offset=${offset}`,
-  pokemonSpecific: (id: number) => `/pokemon/${id}`,
+  pokemonSpecific: (name: string) => `/pokemon/${name}`,
 }
 
 /**

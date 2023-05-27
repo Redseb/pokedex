@@ -1,6 +1,8 @@
+import { Pokemon, PokemonStat } from "app/types"
 import { Api, API_ROUTES } from "./api"
-import { ListPokemonDTO, PokemonDTO } from "./api.types"
+import { ListPokemonDTO, PokemonDTO, PokemonStatDTO } from "./api.types"
 import { getGeneralApiProblem } from "./apiProblem"
+import { toTitleCase, toTitleCaseFirstWord } from "app/utils/helpersCommon"
 
 export class ApiPokemon {
   api: Api
@@ -8,6 +10,34 @@ export class ApiPokemon {
   constructor(api: Api) {
     this.api = api
   }
+
+  pokemonMapper = (pokemon: PokemonDTO): Pokemon => ({
+    id: pokemon.id,
+    name: toTitleCaseFirstWord(pokemon.name),
+    height: pokemon.height,
+    weight: pokemon.weight,
+    types: pokemon.types.map((type) => type.type.name),
+    stats: {
+      [PokemonStat.Hp]: 0,
+      [PokemonStat.Attack]: 0,
+      [PokemonStat.Defense]: 0,
+      [PokemonStat.SpecialAttack]: 0,
+      [PokemonStat.SpecialDefense]: 0,
+      [PokemonStat.Speed]: 0,
+      ...pokemon.stats.reduce((statsList, stat) => {
+        if (stat.stat.name === PokemonStatDTO.SpecialAttack) {
+          statsList[PokemonStat.SpecialAttack] = stat.base_stat
+        } else if (stat.stat.name === PokemonStatDTO.SpecialDefense) {
+          statsList[PokemonStat.SpecialDefense] = stat.base_stat
+        } else {
+          statsList[stat.stat.name] = stat.base_stat
+        }
+        return statsList
+      }, {}),
+    },
+    sprites: pokemon.sprites,
+    abilities: pokemon.abilities.map((ability) => toTitleCase(ability.ability.name)),
+  })
 
   async getPokemonList(limit: number, offset: number) {
     const response = await this.api.apisauce.get<ListPokemonDTO[]>(
@@ -26,8 +56,8 @@ export class ApiPokemon {
     return response
   }
 
-  async getPokemonSpecific(id: number) {
-    const response = await this.api.apisauce.get<PokemonDTO[]>(API_ROUTES.pokemonSpecific(id))
+  async getPokemonSpecific(name: string) {
+    const response = await this.api.apisauce.get<PokemonDTO>(API_ROUTES.pokemonSpecific(name))
 
     if (!response.ok) {
       const problem = getGeneralApiProblem(response)
@@ -38,6 +68,6 @@ export class ApiPokemon {
       }
     }
 
-    return response
+    return this.pokemonMapper(response.data)
   }
 }

@@ -11,3 +11,33 @@ export default function padNumber(num: number, size = 3): string {
   }
   return padded
 }
+
+/**
+ * Converts a string to title case and removes all non alhpabetical characters.
+ * @param str The string to convert.
+ * @returns The converted string.
+ */
+export function toTitleCase(str: string): string {
+  return str
+    .replace(/[^a-zA-Z ]/g, "")
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
+}
+
+/**
+ * Converts a string to title case and removes all non alhpabetical characters, AND returns only the first word
+ * @param str The string to convert.
+ * @returns The converted string.
+ */
+export function toTitleCaseFirstWord(str: string): string {
+  return (
+    str
+      .replace(/[^a-zA-Z ]/g, "")
+      .toLowerCase()
+      .split(" ")[0]
+      .charAt(0)
+      .toUpperCase() + str.slice(1)
+  )
+}
