@@ -7,6 +7,7 @@ import { PokeCard, Screen } from "app/components"
 import { useStores } from "app/models"
 import Constants from "expo-constants"
 import { spacing } from "app/theme"
+import { Pokemon } from "app/types"
 
 interface HomeScreenProps
   extends NativeStackScreenProps<TabsNavigatorScreenProps<TabsNames.Home>> {}
@@ -25,12 +26,18 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
     paddingVertical: Constants.statusBarHeight + spacing.md,
   }
 
+  const renderItem = ({ item }: { item: Pokemon }) => (
+    <PokeCard pokemon={item} key={item.name} style={$pokecard} />
+  )
+
+  const keyExtractor = (item: Pokemon, index: number) => `${item.name}${index}`
+
   return (
     <Screen style={$root} contentContainerStyle={$rootContentContainer}>
       <FlatList
         data={pokemon}
-        renderItem={({ item }) => <PokeCard pokemon={item} key={item.name} style={$pokecard} />}
-        keyExtractor={(item, index) => item.name + index}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
         numColumns={2}
         contentContainerStyle={listContainer}
         onEndReachedThreshold={0.5}
