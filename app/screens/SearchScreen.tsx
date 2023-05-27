@@ -27,13 +27,15 @@ export const SearchScreen: FC<SearchScreenProps> = observer(function SearchScree
 
   const renderContent = () => {
     switch (searchStatus) {
+      case DATA_STATUS.IDLE:
+        return <Text tx="searchScreen.idle" style={$statusText} />
       case DATA_STATUS.PENDING:
-        return <ActivityIndicator color={colors.primary} />
+        return <ActivityIndicator color={colors.primary} size="large" />
       case DATA_STATUS.FULFILLED:
         if (!searchPokemon) break
         return <PokeCard pokemon={searchPokemon} />
       case DATA_STATUS.REJECTED:
-        return <Text text={I18n.t(`searchScreen.${searchStatus}`)} style={$statusText} />
+        return <Text tx="searchScreen.rejected" style={$statusText} />
       default:
         return null
     }
