@@ -4,6 +4,10 @@ const en = {
     cancel: "Cancel",
     back: "Back",
   },
+  favoritesScreen: {
+    empty:
+      "You have no favorites yet. Click the star icon on a Pokemon to add it to your favorites!",
+  },
   pokemonDetails: {
     types: "Types: ",
     baseStats: "Base Stats",
@@ -21,8 +25,7 @@ const en = {
     searchTermLabel: "Name or ID",
     searchButton: "Search!",
     searchPlaceholder: "Search for a Pokemon",
-    idle: "",
-    pending: "Searching...",
+    idle: "Search for a Pokemon by name or ID",
     rejected: "Hmm we couldn't find that Pokemon. Please enter a valid Pokemon name or ID",
   },
   errorScreen: {

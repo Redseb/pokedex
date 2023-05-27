@@ -18,6 +18,8 @@ export const PokemonStoreModel = types
   .actions((self) => ({
     getPokemon: () =>
       flow(function* () {
+        if (self.dataStatus === DATA_STATUS.PENDING) return
+        self.setProp("dataStatus", DATA_STATUS.PENDING)
         // Fetch next 20 list from API
         console.log("current offset", self.currentOffset)
         const pokemonListResponse = yield apiPokemon.getPokemonList(20, self.currentOffset)
@@ -49,7 +51,7 @@ export const PokemonStoreModel = types
     getSpecificPokemon: (searchTerm: string) =>
       flow(function* () {
         self.setProp("searchStatus", DATA_STATUS.PENDING)
-        yield delay(3000)
+        yield delay(300)
         // Search locally first
         let pokemon =
           self.pokemon.find((pokemon) => pokemon.name === searchTerm) ||

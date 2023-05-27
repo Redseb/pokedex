@@ -57,7 +57,9 @@ export class ApiPokemon {
   }
 
   async getPokemonSpecific(name: string) {
-    const response = await this.api.apisauce.get<PokemonDTO>(API_ROUTES.pokemonSpecific(name))
+    const response = await this.api.apisauce.get<PokemonDTO>(
+      API_ROUTES.pokemonSpecific(name.toLowerCase()),
+    )
 
     if (!response.ok) {
       const problem = getGeneralApiProblem(response)
