@@ -43,6 +43,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
         onEndReachedThreshold={0.5}
         onEndReached={getPokemon}
         ListEmptyComponent={ListEmptyComponent}
+        extraData={pokemon.length}
       />
     </Screen>
   )

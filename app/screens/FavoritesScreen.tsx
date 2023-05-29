@@ -39,6 +39,7 @@ export const FavoritesScreen: FC<FavoritesScreenProps> = observer(function Favor
         numColumns={2}
         contentContainerStyle={listContainer}
         ListEmptyComponent={ListEmptyComponent}
+        extraData={pokemonFavorites.length}
       />
     </Screen>
   )
