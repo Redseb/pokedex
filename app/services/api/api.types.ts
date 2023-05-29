@@ -7,6 +7,10 @@ export interface ListPokemonDTO {
   results: PokemonShortDTO[]
 }
 
+/**
+ * The raw data coming from the API describing a pokemon's elemental type.
+ * @see https://pokeapi.co/docs/v2#types
+ */
 export enum PokemonStatDTO {
   Hp = "hp",
   Attack = "attack",
@@ -15,7 +19,9 @@ export enum PokemonStatDTO {
   SpecialDefense = "special-defense",
   Speed = "speed",
 }
-
+/**
+ * Raw data from the API describing a pokemon by its name and url.
+ */
 export interface PokemonShortDTO {
   name: string
   url: string
@@ -23,6 +29,7 @@ export interface PokemonShortDTO {
 
 /**
  * The raw data coming from the API describing a pokemon.
+ * @see https://pokeapi.co/docs/v2#pokemon
  */
 export interface PokemonDTO {
   id: number

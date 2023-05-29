@@ -11,6 +11,11 @@ export class ApiPokemon {
     this.api = api
   }
 
+  /**
+   * Takes a pokemonDTO object and maps it to a Pokemon object
+   * @param pokemon pokemonDTO object to map
+   * @returns Pokemon object
+   */
   pokemonMapper = (pokemon: PokemonDTO): Pokemon => ({
     id: pokemon.id,
     name: toTitleCaseFirstWord(pokemon.name),
@@ -39,6 +44,11 @@ export class ApiPokemon {
     abilities: pokemon.abilities.map((ability) => toTitleCase(ability.ability.name)),
   })
 
+  /**
+   * Fetches a list of PokemonShortDTO objects from the API
+   * @param limit number of pokemon to fetch
+   * @param offset number of pokemon to skip
+   */
   async getPokemonList(limit: number, offset: number) {
     const response = await this.api.apisauce.get<ListPokemonDTO[]>(
       API_ROUTES.pokemonList(limit, offset),
@@ -56,6 +66,11 @@ export class ApiPokemon {
     return response
   }
 
+  /**
+   * Fetches a PokemonDTO object from the API and maps it to a Pokemon object
+   * @param name name of the pokemon to fetch (OR id)
+   * @returns Pokemon object
+   */
   async getPokemonSpecific(name: string) {
     const response = await this.api.apisauce.get<PokemonDTO>(
       API_ROUTES.pokemonSpecific(name.toLowerCase()),
