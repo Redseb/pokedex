@@ -1,3 +1,7 @@
+/**
+ * Pokemon types
+ * @see https://pokeapi.co/docs/v2#types
+ */
 export enum PokemonElementalType {
   Normal = "normal",
   Fighting = "fighting",
@@ -19,6 +23,10 @@ export enum PokemonElementalType {
   Fairy = "fairy",
 }
 
+/**
+ * Pokemon stats
+ * @see https://pokeapi.co/docs/v2#stats
+ */
 export enum PokemonStat {
   Hp = "hp",
   Attack = "attack",

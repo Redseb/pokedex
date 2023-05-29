@@ -1,6 +1,9 @@
 import { types } from "mobx-state-tree"
 import { PokemonElementalType, PokemonStat } from "../pokemon"
 
+/**
+ * MST model describing a Pokemon.
+ */
 export const PokemonModel = types.model("Pokemon", {
   id: types.number,
   name: types.string,
