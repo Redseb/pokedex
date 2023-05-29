@@ -21,7 +21,6 @@ export const PokemonStoreModel = types
         if (self.dataStatus === DATA_STATUS.PENDING) return
         self.setProp("dataStatus", DATA_STATUS.PENDING)
         // Fetch next 20 list from API
-        console.log("current offset", self.currentOffset)
         const pokemonListResponse = yield apiPokemon.getPokemonList(20, self.currentOffset)
         if (!pokemonListResponse.ok) {
           self.setProp("dataStatus", DATA_STATUS.REJECTED)
