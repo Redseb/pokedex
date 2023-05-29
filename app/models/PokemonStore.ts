@@ -4,6 +4,7 @@ import { PokemonModel } from "app/types"
 import { DATA_STATUS } from "app/types/dataStatus"
 import { PokemonShortDTO, apiPokemon } from "app/services/api"
 import { delay } from "app/utils/delay"
+import { timing } from "app/theme"
 
 export const PokemonStoreModel = types
   .model("PokemonStore")
@@ -50,7 +51,7 @@ export const PokemonStoreModel = types
     getSpecificPokemon: (searchTerm: string) =>
       flow(function* () {
         self.setProp("searchStatus", DATA_STATUS.PENDING)
-        yield delay(300)
+        yield delay(timing.quick)
         // Search locally first
         let pokemon =
           self.pokemon.find((pokemon) => pokemon.name === searchTerm) ||
