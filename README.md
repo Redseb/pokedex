@@ -1,5 +1,6 @@
 # React Native Pokedex
 
+<img src="./assets/images/app-icon-all.png" alt="Pokeball App Icon" height="100">
 A small app written in React Native that uses the PokeApi to display information about Pokemon.
 
 ## Features
