@@ -4,7 +4,7 @@
  * @param size The total number of digits that the padded number should have. Defaults to 4.
  * @returns The padded number as a string.
  */
-export default function padNumber(num: number, size = 4): string {
+export function padNumber(num: number, size = 4): string {
   let padded = num.toString()
   while (padded.length < size) {
     padded = "0" + padded

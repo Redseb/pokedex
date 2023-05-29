@@ -6,7 +6,7 @@ import { AppScreenName, AppStackParamList, AppStackScreenProps } from "app/navig
 import { AutoImage, Icon, Screen, Text } from "app/components"
 import { NavigationProp, RouteProp, useNavigation, useRoute } from "@react-navigation/native"
 import { colors, rounding, spacing } from "app/theme"
-import padNumber from "app/utils/helpersCommon"
+import { padNumber } from "app/utils/helpersCommon"
 import { useStores } from "app/models"
 
 interface PokemonDetailsScreenProps

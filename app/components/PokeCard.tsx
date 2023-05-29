@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite"
 import { Pokemon } from "../types"
 import { $shadow, ACTIVE_OPACITY, colors, rounding, spacing } from "../theme"
 import { AutoImage, Text } from "./"
-import padNumber from "app/utils/helpersCommon"
+import { padNumber } from "app/utils/helpersCommon"
 import { AppScreenName, navigate } from "app/navigators"
 
 const CARD_HEIGHT = 100
