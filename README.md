@@ -21,22 +21,22 @@ To run the project locally, follow these steps:
 
 1. Clone the repository to your local machine
 2. Install the dependencies using `yarn`
-3. Start the Metro serve using `yarn start`
+3. Start the Metro server using `yarn start`
 4. Open the app in iOS or Android using `yarn ios` or `yarn android`
 
 ## Demo
 
-<img src="./docs/home-details.gif" alt="Home screen and Pokemon Details screen and functionality" height="720">
+| <img src="./docs/home-details.gif" alt="Home screen and Pokemon Details screen and functionality" height="720"> |
+| --------------------------------------------------------------------------------------------------------------- |
+| Home Screen and Pokemon Details Screen                                                                          |
 
-Home Screen and Pokemon Details Screen
+| <img src="./docs/favorites.gif" alt="Favorites screen and functionality" height="720"> |
+| -------------------------------------------------------------------------------------- |
+| Favorites Screen                                                                       |
 
-<img src="./docs/favorites.gif" alt="Favorites screen and functionality" height="720">
-
-Favorites Screen
-
-<img src="./docs/search.gif" alt="Search screen and functionality" height="720">
-
-Search Screen
+| <img src="./docs/search.gif" alt="Search screen and functionality" height="720"> |
+| -------------------------------------------------------------------------------- |
+| Search Screen                                                                    |
 
 ## Tech Stack
 
