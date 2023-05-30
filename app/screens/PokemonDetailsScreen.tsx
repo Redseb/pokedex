@@ -60,13 +60,7 @@ export const PokemonDetailsScreen: FC<PokemonDetailsScreenProps> = observer(
           <View style={dataContainer}>
             <Text>
               <Text weight="bold" tx="pokemonDetails.types" />
-              <Text
-                text={`${
-                  pokemon.types.length > 1
-                    ? `${pokemon.types[0]} / ${pokemon.types[1]}`
-                    : pokemon.types[0]
-                }`}
-              />
+              <Text text={pokemon.types.join(" / ")} />
             </Text>
           </View>
 
