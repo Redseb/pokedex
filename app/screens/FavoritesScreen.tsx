@@ -8,8 +8,6 @@ import { useStores } from "app/models"
 import { spacing } from "app/theme"
 import Constants from "expo-constants"
 import { Pokemon } from "app/types"
-// import { useNavigation } from "@react-navigation/native"
-// import { useStores } from "app/models"
 
 interface FavoritesScreenProps
   extends NativeStackScreenProps<TabsNavigatorScreenProps<TabsNames.Favorites>> {}

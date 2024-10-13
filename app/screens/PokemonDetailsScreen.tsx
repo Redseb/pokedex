@@ -39,7 +39,7 @@ export const PokemonDetailsScreen: FC<PokemonDetailsScreenProps> = observer(
     return (
       <Screen style={screenStyle} contentContainerStyle={$rootContentContainer} preset="scroll">
         <View style={$headerContainer}>
-          <Icon icon="back" onPress={() => goBack()} />
+          <Icon icon="back" onPress={goBack} />
           <Icon
             icon="star"
             onPress={onPressFavorite}

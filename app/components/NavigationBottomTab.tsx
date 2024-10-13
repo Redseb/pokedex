@@ -3,10 +3,16 @@ import { $shadow, colors, rounding, spacing } from "app/theme"
 import React from "react"
 import { View, TouchableOpacity, ViewStyle } from "react-native"
 import { NavigationIcon } from "./NavigationIcon"
+import { BottomTabBarProps } from "@react-navigation/bottom-tabs"
 
-export const NavigationBottomTab = ({ state, descriptors, navigation }) => {
+export const NavigationBottomTab = ({
+  state,
+  descriptors,
+  navigation,
+  insets,
+}: BottomTabBarProps) => {
   return (
-    <View style={$tabBarContainer}>
+    <View style={[$tabBarContainer, { marginBottom: insets.bottom }]}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key]
 
@@ -21,7 +27,7 @@ export const NavigationBottomTab = ({ state, descriptors, navigation }) => {
 
           if (!isFocused && !event.defaultPrevented) {
             // The `merge: true` option makes sure that the params inside the tab screen are preserved
-            navigation.navigate({ name: route.name, merge: true })
+            navigation.navigate({ name: route.name, merge: true, params: {} })
           }
         }
 

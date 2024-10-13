@@ -8,7 +8,6 @@ import Constants from "expo-constants"
 import { colors, spacing } from "app/theme"
 import { useStores } from "app/models"
 import { DATA_STATUS } from "app/types/dataStatus"
-import I18n from "i18n-js"
 
 interface SearchScreenProps
   extends NativeStackScreenProps<TabsNavigatorScreenProps<TabsNames.Search>> {}
