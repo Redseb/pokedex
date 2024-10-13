@@ -39,8 +39,9 @@ export const PokemonDetailsScreen: FC<PokemonDetailsScreenProps> = observer(
     return (
       <Screen style={screenStyle} contentContainerStyle={$rootContentContainer} preset="scroll">
         <View style={$headerContainer}>
-          <Icon icon="back" onPress={goBack} />
+          <Icon icon="back" onPress={goBack} testID="BACK" />
           <Icon
+            testID="FAVORITE"
             icon="star"
             onPress={onPressFavorite}
             color={isFavorite ? colors.palette.accent500 : null}
@@ -51,6 +52,7 @@ export const PokemonDetailsScreen: FC<PokemonDetailsScreenProps> = observer(
             source={{ uri: pokemon.sprites.front_default }}
             maxHeight={200}
             maxWidth={200}
+            testID="POKEMON_IMAGE"
           />
         </View>
         <View style={nameContainer}>

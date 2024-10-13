@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokeCard matches snapshot 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#7AC74C",
+      "borderRadius": 5,
+      "elevation": 5,
+      "height": 100,
+      "justifyContent": "space-between",
+      "margin": 4,
+      "opacity": 1,
+      "shadowColor": "#000",
+      "shadowOffset": {
+        "height": 2,
+        "width": 0,
+      },
+      "shadowOpacity": 0.25,
+      "shadowRadius": 3.84,
+    }
+  }
+>
+  <RCTImageView
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    internal_analyticTag={null}
+    resizeMode="cover"
+    source={
+      [
+        {
+          "uri": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+        },
+      ]
+    }
+    style={
+      {
+        "height": 75,
+        "overflow": "hidden",
+        "width": 75,
+      }
+    }
+  />
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderBottomLeftRadius": 5,
+          "borderBottomRightRadius": 5,
+          "justifyContent": "center",
+          "width": "100%",
+        },
+        {
+          "backgroundColor": "#4E8C18",
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          {},
+          [
+            {
+              "fontSize": 16,
+              "lineHeight": 24,
+            },
+            {
+              "fontFamily": "spaceGroteskRegular",
+            },
+            {
+              "color": "#191015",
+            },
+          ],
+          undefined,
+          undefined,
+          {
+            "color": "#FFFFFF",
+          },
+        ]
+      }
+    >
+      #0001 Bulbasaur
+    </Text>
+  </View>
+</View>
+`;
