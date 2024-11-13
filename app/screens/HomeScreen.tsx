@@ -26,11 +26,11 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen() {
     paddingVertical: Constants.statusBarHeight,
   }
 
+  const keyExtractor = (item: Pokemon, index: number) => `${item.name}${index}`
+
   const renderItem = ({ item }: { item: Pokemon }) => (
     <PokeCard pokemon={item} key={item.name} style={$pokecard} />
   )
-
-  const keyExtractor = (item: Pokemon, index: number) => `${item.name}${index}`
 
   return (
     <Screen style={$root} contentContainerStyle={$rootContentContainer}>
